@@ -18,14 +18,12 @@ public class TreeService {
 
 	@PersistenceContext
 	EntityManager em;
-	//private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(this);
 
 	public List<Tree> findAll() {
 		return treeRepository.findAll();
 	}
 
 	public void add(Integer idParent, String nameLeaf) {
-		//EntityManager entityManager = entityManagerFactory.createEntityManager();
 		StoredProcedureQuery query = em.createStoredProcedureQuery("add_nodeOrLeaf", Tree.class)
 				.registerStoredProcedureParameter(1, String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter(2, Integer.class,ParameterMode.IN)

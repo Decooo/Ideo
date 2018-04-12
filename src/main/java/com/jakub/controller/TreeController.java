@@ -39,6 +39,8 @@ public class TreeController implements Initializable {
 		viewItems();
 	}
 
+	private TreeItem<String> root;
+
 	public void viewItems() {
 		List<Tree> items = treeService.findAll();
 		Collections.sort(items, new TreeComparator());
@@ -47,7 +49,7 @@ public class TreeController implements Initializable {
 			parents.put(items.get(i).getIdtree(), items.get(i).getIdparent());
 		}
 
-		TreeItem<String> root = null;
+		root = null;
 		for (Map.Entry<Integer, TreeItem<String>> entry : itemById.entrySet()) {
 			Integer key = entry.getKey();
 			Integer parent = parents.get(key);
@@ -74,4 +76,24 @@ public class TreeController implements Initializable {
 	public void addAction(ActionEvent event) throws IOException {
 	stageManager.switchSceneAndWait(FxmlView.ADD);
 	}
+
+	@FXML
+	public void expandWholeAction(ActionEvent event) {
+		displayTreeView(root,true);
+	}
+
+	@FXML
+	public void hideWholeAction(ActionEvent event) {
+		displayTreeView(root,false);
+	}
+
+	private void displayTreeView(TreeItem<?> item, boolean visibility){
+		if(item != null && !item.isLeaf()){
+			item.setExpanded(visibility);
+			for(TreeItem<?> child:item.getChildren()){
+				displayTreeView(child,visibility);
+			}
+		}
+	}
+
 }

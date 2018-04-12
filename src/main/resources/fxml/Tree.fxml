@@ -14,7 +14,9 @@
          </font>
       </Label>
       <TreeView fx:id="treeView" layoutX="45.0" layoutY="91.0" prefHeight="526.0" prefWidth="516.0" />
-      <Button layoutX="830.0" layoutY="592.0" mnemonicParsing="false" onAction="#exitAction" text="Zamknij" />
-      <Button layoutX="721.0" layoutY="110.0" mnemonicParsing="false" onAction="#addAction" text="Dodaj" />
+      <Button layoutX="798.0" layoutY="586.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="31.0" prefWidth="90.0" text="Zamknij" />
+      <Button layoutX="681.0" layoutY="113.0" mnemonicParsing="false" onAction="#addAction" prefHeight="40.0" prefWidth="140.0" text="Dodaj wezeł" />
+      <Button layoutX="681.0" layoutY="445.0" mnemonicParsing="false" onAction="#expandWholeAction" prefHeight="40.0" prefWidth="140.0" text="Rozwiń całe drzewo" />
+      <Button layoutX="681.0" layoutY="500.0" mnemonicParsing="false" onAction="#hideWholeAction" prefHeight="40.0" prefWidth="140.0" text="Zwiń całe drzewo" />
    </children>
 </AnchorPane>
