@@ -33,4 +33,12 @@ public class TreeService {
 		em.close();
 	}
 
+	public void delete(int idNode){
+		StoredProcedureQuery query = em.createStoredProcedureQuery("deleteNode", Tree.class)
+				.registerStoredProcedureParameter(1,Integer.class,ParameterMode.IN)
+				.setParameter(1, idNode);
+		query.execute();
+		em.close();
+	}
+
 }
