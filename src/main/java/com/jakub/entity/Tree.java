@@ -59,12 +59,6 @@ public class Tree {
 
 	@Override
 	public String toString() {
-		return "Tree{" +
-				"idtree=" + idtree +
-				", idparent=" + idparent +
-				", name='" + name + '\'' +
-				", left=" + left +
-				", right=" + right +
-				'}';
+		return name;
 	}
 }
