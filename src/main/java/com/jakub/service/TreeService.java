@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by jakub on 12.04.2018.
@@ -21,6 +22,11 @@ public class TreeService {
 
 	public List<Tree> findAll() {
 		return treeRepository.findAll();
+	}
+
+	public Optional<Tree> findById(int id){
+		Optional<Tree> tree = treeRepository.findById(id);
+		return tree;
 	}
 
 	public void add(Integer idParent, String nameLeaf) {
@@ -41,4 +47,15 @@ public class TreeService {
 		em.close();
 	}
 
+	public void moveNode(int idtree, int idParent, String nameLeaf) {
+		StoredProcedureQuery query = em.createStoredProcedureQuery("MoveNode",Tree.class)
+				.registerStoredProcedureParameter(1,Integer.class,ParameterMode.IN)
+				.registerStoredProcedureParameter(2,Integer.class,ParameterMode.IN)
+				.registerStoredProcedureParameter(3,String.class,ParameterMode.IN)
+				.setParameter(1,idtree)
+				.setParameter(2,idParent)
+				.setParameter(3,nameLeaf);
+		query.execute();
+		em.close();
+	}
 }

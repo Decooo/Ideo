@@ -6,7 +6,6 @@ import com.jakub.entity.Tree;
 import com.jakub.service.TreeService;
 import com.jakub.view.FxmlView;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
 
@@ -44,6 +42,15 @@ public class TreeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		viewItems();
+	}
+	private static Optional<Tree> tree;
+
+	public static Optional<Tree> getTree() {
+		return tree;
+	}
+
+	public static void setTree(Optional<Tree> tree) {
+		TreeController.tree = tree;
 	}
 
 	public void viewItems() {
@@ -122,5 +129,12 @@ public class TreeController implements Initializable {
 		if (result.get() == ButtonType.OK) treeService.delete(nodes);
 	}
 
+	@FXML
+	public void editAction(ActionEvent event) throws IOException {
+		TreeItem<Tree> node = treeView.getSelectionModel().getSelectedItem();
+		Optional<Tree> leaf = treeService.findById(node.getValue().getIdtree());
+		setTree(leaf);
+		stageManager.switchSceneAndWait(FxmlView.EDIT);
+	}
 }
 

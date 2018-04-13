@@ -26,6 +26,16 @@ public enum FxmlView {
 		public String getFxmlFile() {
 			return "/fxml/Add.fxml";
 		}
+	},EDIT{
+		@Override
+		public String getTitle() {
+			return getStringFromResourceBundle("edit.title");
+		}
+
+		@Override
+		public String getFxmlFile() {
+			return "/fxml/Edit.fxml";
+		}
 	};
 
 	public abstract String getTitle();

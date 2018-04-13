@@ -1,5 +1,6 @@
 package com.jakub.controller;
 
+import com.jakub.Util.ErrorAlerts;
 import com.jakub.entity.Tree;
 import com.jakub.service.TreeService;
 import javafx.collections.FXCollections;
@@ -58,7 +59,7 @@ public class AddController implements Initializable {
 	public void addAction(ActionEvent event) {
 		List<Tree> list = treeService.findAll();
 		if (nameTextField.getText().length() == 0) {
-			inncorectName();
+			ErrorAlerts.inncorectName();
 		} else {
 			treeService.add(list.get(parentComboBox.getSelectionModel().getSelectedIndex()).getIdtree(), nameTextField.getText());
 			addedNewNodeAlert();
@@ -78,11 +79,4 @@ public class AddController implements Initializable {
 		}
 	}
 
-	private void inncorectName() {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setTitle("Błąd");
-		alert.setHeaderText("Nazwa nie może być pusta");
-		alert.getButtonTypes().setAll(ButtonType.OK);
-		alert.showAndWait();
-	}
 }

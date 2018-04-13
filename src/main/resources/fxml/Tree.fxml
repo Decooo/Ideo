@@ -17,9 +17,10 @@
       </Label>
       <TreeView fx:id="treeView" layoutX="45.0" layoutY="91.0" prefHeight="526.0" prefWidth="516.0">
          <contextMenu>
-            <ContextMenu onAction="#deleteAction">
+            <ContextMenu>
               <items>
-                <MenuItem mnemonicParsing="false" text="Usuń" />
+                <MenuItem mnemonicParsing="false" onAction="#deleteAction" text="Usuń" />
+                 <MenuItem mnemonicParsing="false" onAction="#editAction" text="Edytuj / przenieś" />
               </items>
             </ContextMenu>
          </contextMenu></TreeView>
@@ -27,5 +28,6 @@
       <Button layoutX="681.0" layoutY="113.0" mnemonicParsing="false" onAction="#addAction" prefHeight="40.0" prefWidth="140.0" text="Dodaj wezeł" />
       <Button layoutX="681.0" layoutY="445.0" mnemonicParsing="false" onAction="#expandWholeAction" prefHeight="40.0" prefWidth="140.0" text="Rozwiń całe drzewo" />
       <Button layoutX="681.0" layoutY="500.0" mnemonicParsing="false" onAction="#hideWholeAction" prefHeight="40.0" prefWidth="140.0" text="Zwiń całe drzewo" />
+      <Label layoutX="681.0" layoutY="193.0" prefHeight="129.0" prefWidth="140.0" text="Opcje usuwania i edycji &#10;węzłów  są dostępne w &#10;menu kontekstowym &#10;wyświetlonego drzewa" />
    </children>
 </AnchorPane>
