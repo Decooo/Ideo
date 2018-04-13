@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>fxml</name>
+	<name_leaf>fxml</name_leaf>
 	<description>Project for Ideo</description>
 
 	<parent>
